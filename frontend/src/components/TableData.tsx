@@ -1,8 +1,16 @@
 import "../App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import DeleteIcon  from "../deleteIcon.png";
-function TableData({change,setChange}:{change:boolean,setChange:any}) {
+import DeleteIcon from "../deleteIcon.png";
+function TableData({
+  change,
+  setChange,
+  mange,
+}: {
+  change: boolean;
+  setChange: any;
+  mange: boolean;
+}) {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -19,20 +27,19 @@ function TableData({change,setChange}:{change:boolean,setChange:any}) {
     fetchData();
   }, [change]);
   let tmp = data;
-  const deleteSalesData = (id:any) => {
-    try{
-        axios
-      .delete(`http://localhost:4000/api/v1/brand_sales_daily/${id}`)
-      .then((res) => console.log("deleted Successfully data", res))
-      .catch((error) => {
-        console.log(error);
-      });
-    }
-    catch(error){
-        console.error(error);
+  const deleteSalesData = (id: any) => {
+    try {
+      axios
+        .delete(`http://localhost:4000/api/v1/brand_sales_daily/${id}`)
+        .then((res) => console.log("deleted Successfully data", res))
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.error(error);
     }
     change ? setChange(false) : setChange(true);
-  }
+  };
   return (
     <>
       {tmp.length
@@ -56,7 +63,15 @@ function TableData({change,setChange}:{change:boolean,setChange:any}) {
                     <div>{items["grossMarginPercentage"]}</div>
                   </td>
                   <td>
-                    <div onClick={() => deleteSalesData(items['_id'])}><img src={DeleteIcon} alt="" className="deleteIcon"/></div>
+                    {mange ? (
+                      <div onClick={() => deleteSalesData(items["_id"])}>
+                        <img src={DeleteIcon} alt="" className="deleteIcon" />
+                      </div>
+                    ) : (
+                      <div>
+                        {new Date(Date.now()).toLocaleString().split(",")[0]}
+                      </div>
+                    )}
                   </td>
                 </tr>
               </tbody>

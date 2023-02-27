@@ -1,10 +1,16 @@
 import { Button, Input, Select } from "@chakra-ui/react";
 import "../App.css";
 import { useState } from "react";
-import  {ChevronDownIcon}   from "@chakra-ui/icons";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
 import axios from "axios";
-function AddBrandSales({change,setChange}:{change:boolean,setChange:any}) {
+function AddBrandSales({
+  change,
+  setChange,
+}: {
+  change: boolean;
+  setChange: any;
+}) {
   const [brand, setBrand] = useState("");
   const [transaction, setTransaction] = useState("");
   const [totalOrders, setTotalOrders] = useState("");
