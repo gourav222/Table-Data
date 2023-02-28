@@ -8,9 +8,10 @@ import { Container } from "./Header";
 function SalesTable() {
   const [mange, setMange] = useState(true);
   const [date, setDate] = useState("");
+  const [addSales,setAddSales] = useState(false);
   const handleAddBrandSales = () => {
-    if (mange === false) setMange(true);
-    else setMange(false);
+    if (addSales === false) setAddSales(true);
+    else setAddSales(false);
   };
 
   return (
@@ -48,7 +49,7 @@ function SalesTable() {
       >
         Add Brand Sales
       </Button>
-      <TableHeader mange={mange} />
+      <TableHeader mange={mange} addSales={addSales}/>
     </>
   );
 }

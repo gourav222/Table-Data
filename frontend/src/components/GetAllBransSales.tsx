@@ -5,7 +5,7 @@ function GetAllBransSales() {
   return (
     <>
       <Container caption={true} />
-      <TableHeader mange={false} />
+      <TableHeader mange={false} addSales={false}/>
     </>
   );
 }

@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import AddBrandSales from "./AddBrandSales";
 import TableData from "./TableData";
 
-function TableHeader({ mange }: { mange: boolean }) {
+function TableHeader({ mange,addSales }: { mange: boolean;addSales:boolean }) {
   const [change, setChange] = useState<boolean>(false);
+  
   return (
     <TableContainer margin={4}>
       <Table>
@@ -71,7 +72,7 @@ function TableHeader({ mange }: { mange: boolean }) {
 
         <TableData mange={mange} change={change} setChange={setChange} />
 
-        {mange && (
+        {addSales && (
           <tbody>
             <AddBrandSales change={change} setChange={setChange} />
           </tbody>
